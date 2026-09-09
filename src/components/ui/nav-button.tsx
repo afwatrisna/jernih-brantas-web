@@ -1,20 +1,20 @@
-"use client";
-
+import type { IconName } from "@/lib/dashboard-types";
 import { Icon } from "./icon";
 
 type NavButtonProps = {
+  active: boolean;
+  icon: IconName;
   label: string;
-  icon: string;
-  active?: boolean;
-  onClick?: () => void;
+  onClick: () => void;
 };
 
-export function NavButton({ label, icon, active, onClick }: NavButtonProps) {
+export function NavButton({ active, icon, label, onClick }: NavButtonProps) {
   return (
     <button
       type="button"
-      className={`nav-button${active ? " is-active" : ""}`}
+      className={`nav-button ${active ? "is-active" : ""}`}
       onClick={onClick}
+      aria-current={active ? "page" : undefined}
     >
       <Icon name={icon} />
       <span>{label}</span>

@@ -1,15 +1,15 @@
-"use client";
+import type { StationInsight } from "@/lib/dashboard-types";
 
-type StatusBadgeProps = {
-  insight: { severity: string; label: string };
+export function StatusBadge({
+  insight,
+  compact = false,
+}: {
+  insight: StationInsight;
   compact?: boolean;
-};
-
-export function StatusBadge({ insight, compact }: StatusBadgeProps) {
-  const extreme = insight.label.includes("Ekstrem");
+}) {
   return (
     <span
-      className={`status-badge severity-${insight.severity}${compact ? " compact" : ""}${extreme ? " is-extreme" : ""}`}
+      className={`status-badge ${compact ? "compact" : ""} severity-${insight.severity}`}
     >
       <i />
       {insight.label}
