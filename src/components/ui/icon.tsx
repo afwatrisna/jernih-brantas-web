@@ -1,25 +1,26 @@
-"use client";
+import type { IconName } from "@/lib/dashboard-types";
 
-type IconProps = {
-  name: string;
-  className?: string;
-};
-
-const ICONS: Record<string, string> = {
-  water: "💧",
-  check: "✓",
-  alert: "⚠",
-  database: "🗄️",
-  field: "📋",
-  chart: "📈",
+const ICON_MAP: Record<IconName, string> = {
+  grid: "▦",
+  field: "☷",
+  chart: "⌁",
   settings: "⚙",
-  restart: "↺",
+  water: "◒",
+  map: "⌖",
+  plus: "+",
+  check: "✓",
+  restart: "↻",
+  shield: "◈",
+  database: "▤",
+  alert: "⚠",
+  trend: "↗",
+  download: "⇩",
 };
 
-export function Icon({ name, className }: IconProps) {
+export function Icon({ name }: { name: IconName }) {
   return (
-    <span className={className ? `icon ${className}` : "icon"} aria-hidden="true">
-      {ICONS[name] ?? "•"}
+    <span className={`icon icon-${name}`} aria-hidden="true">
+      {ICON_MAP[name]}
     </span>
   );
 }
